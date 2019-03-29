@@ -9,13 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23212be9e037c6046bf3e11bf2ab55ce, type: 3}
-  m_Name: Test
+  m_Name: Demo
   m_EditorClassIdentifier: 
-  color1: {r: 0, g: 0.0043610586, b: 0.014705896, a: 0}
-  transition12: 0.06
-  color2: {r: 0.061634954, g: 0.1397059, b: 0.08801756, a: 0}
-  transition23: 0.16
-  color3: {r: 0.45831534, g: 0.7205882, b: 0.13246107, a: 0}
-  transition34: 0.26
-  color4: {r: 0.6360039, g: 1, b: 0.28676468, a: 0}
-  luminanceContribution: 0
+  color1: {r: 0, g: 0, b: 0, a: 0}
+  transition12: 0.13
+  color2: {r: 0.17647058, g: 0.17647058, b: 0.17647058, a: 0}
+  transition23: 0.31
+  color3: {r: 0.50735295, g: 0.50735295, b: 0.50735295, a: 0}
+  transition34: 0.67
+  color4: {r: 1, g: 1, b: 1, a: 0}

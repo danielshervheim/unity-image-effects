@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteInEditMode]
 [RequireComponent(typeof(Camera))]
 public class GameboyEffect : MonoBehaviour {
 
@@ -12,7 +13,7 @@ public class GameboyEffect : MonoBehaviour {
 	private Material material;
 
 	// Use this for initialization
-	void Start () {
+	void OnEnable () {
 		mainCamera = GetComponent<Camera>();
 
 		screen = new RenderTexture((int)(144 * mainCamera.aspect), 144, 0, RenderTextureFormat.ARGBFloat, RenderTextureReadWrite.Linear);
@@ -33,8 +34,10 @@ public class GameboyEffect : MonoBehaviour {
 	}
 	
 	void OnRenderImage(RenderTexture src, RenderTexture dest) {
-		Graphics.Blit(src, screen);
-		Graphics.Blit(screen, dest, material);
+		if (colorPalette != null) {
+			Graphics.Blit(src, screen);
+			Graphics.Blit(screen, dest, material);
+		}
 	}
 
 	void OnDestroy() {

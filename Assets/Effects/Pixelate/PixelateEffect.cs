@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteInEditMode]
 [RequireComponent(typeof(Camera))]
 public class PixelateEffect : MonoBehaviour {
 
@@ -12,7 +13,7 @@ public class PixelateEffect : MonoBehaviour {
 	private RenderTexture screen;
 
 	// Use this for initialization
-	void Start () {
+	void OnEnable () {
 		height = (int)Mathf.Max(height, 1f);
 		cachedHeight = height;
 
