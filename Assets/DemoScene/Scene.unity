@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
+  m_Sun: {fileID: 1523196419}
   m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
@@ -51,7 +51,7 @@ LightmapSettings:
     m_IndirectOutputScale: 1
     m_AlbedoBoost: 1
     m_EnvironmentLightingMode: 0
-    m_EnableBakedLightmaps: 1
+    m_EnableBakedLightmaps: 0
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
     serializedVersion: 10
@@ -213,11 +213,6 @@ GameObject:
   m_Component:
   - component: {fileID: 591253967}
   - component: {fileID: 591253966}
-  - component: {fileID: 591253965}
-  - component: {fileID: 591253969}
-  - component: {fileID: 591253968}
-  - component: {fileID: 591253964}
-  - component: {fileID: 591253970}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -225,32 +220,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &591253964
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 591253963}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13e6af009d640214f8ce86af7cbc889d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  numberOfBins: 10
---- !u!114 &591253965
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 591253963}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 969ba9be9f4d7e145a0704f55380870a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  conversionMode: 0
 --- !u!20 &591253966
 Camera:
   m_ObjectHideFlags: 0
@@ -307,48 +276,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &591253968
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 591253963}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 442a85a7140c80b4da42ebce30628646, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  height: 144
---- !u!114 &591253969
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 591253963}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90e291d2f1121324aabfe97ccde9189e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colorPalette: {fileID: 11400000, guid: 356d4d759a830ae4ab759a82fcd6d5b6, type: 2}
---- !u!114 &591253970
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 591253963}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b8f3b2f231be5a48862ec1e41c6520e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  radius: 5
-  spatialWeight: 1
-  tonalWeight: 1
-  perChannelTonalWeight: 1
 --- !u!1 &1224559246
 GameObject:
   m_ObjectHideFlags: 0
