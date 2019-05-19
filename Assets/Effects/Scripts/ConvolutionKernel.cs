@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+[RequireComponent(typeof(Camera))]
 public abstract class ConvolutionKernel : MonoBehaviour
 {
     private ComputeShader convolution;
