@@ -1,0 +1,33 @@
+﻿#define THREAD_GROUPS 32
+
+// Unless you override the FindKernel() and Convolve() methods in a subclass of
+// ConvolutionKernel.cs, your compute shader must contain the following variables
+// and kernels.
+
+Texture2D<float4> read;  // Texture to read from.
+RWTexture2D<float4> write;  // Texture to write to.
+
+uint width;  // Texture width (assumes r and w textures are same dimension).
+uint height;  // Texture height (assumes r and w textures are same dimension).
+
+uint radius;  // The convolution kernel radius.
+
+
+
+// The first pass (typically convolves a 1D kernel over one dimension (x or y) of the image).
+#pragma kernel FirstPass
+[numthreads(THREAD_GROUPS, THREAD_GROUPS, 1)]
+void FirstPass(uint2 id : SV_DispatchThreadID)
+{
+	write[id] = read[id];
+}
+
+
+
+// The second pass (typically convolves a 1D kernel over the other dimension (x or y) of the image).
+#pragma kernel SecondPass
+[numthreads(THREAD_GROUPS, THREAD_GROUPS, 1)]
+void SecondPass(uint2 id : SV_DispatchThreadID)
+{
+	write[id] = read[id];
+}

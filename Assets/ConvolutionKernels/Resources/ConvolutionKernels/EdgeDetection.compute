@@ -1,0 +1,88 @@
+﻿#define THREAD_GROUPS 32
+
+Texture2D<float4> read;
+RWTexture2D<float4> write;
+
+uint width;
+uint height;
+
+uint radius;  // Not used in EdgeDetection...
+
+bool perChannelEdgeDetection;
+float edgeMultiplier;
+
+
+#pragma kernel HorizontalGradient
+[numthreads(THREAD_GROUPS, THREAD_GROUPS, 1)]
+void HorizontalGradient(uint2 id : SV_DispatchThreadID)
+{
+	float4 v = float4(0, 0, 0, 0);
+
+	float3x3 kernel = {
+		-1, 0, 1,
+		-2, 0, 2,
+		-1, 0, 1
+	};
+
+	for (int y = -1; y <= 1; y++) {
+		for (int x = -1; x <= 1; x++) {
+			if (id.x > 0 && id.x < width - 1 && id.y > 0 && id.y < height - 1) {
+				v += read[id + int2(x, y)] * kernel[1 + x][1 + y];
+			}
+		}
+	}
+	
+	write[id] = v;
+}
+
+
+
+#pragma kernel VerticalGradient
+[numthreads(THREAD_GROUPS, THREAD_GROUPS, 1)]
+void VerticalGradient(uint2 id : SV_DispatchThreadID)
+{
+	float4 v = float4(0, 0, 0, 0);
+
+	float3x3 kernel = {
+		-1, -2, -1,
+		 0,  0,  0,
+		 1,  2,  1
+	};
+
+	for (int y = -1; y <= 1; y++) {
+		for (int x = -1; x <= 1; x++) {
+			if (id.x > 0 && id.x < width - 1 && id.y > 0 && id.y < height - 1) {
+				v += read[id + int2(x, y)] * kernel[1 + x][1 + y];
+			}
+		}
+	}
+
+	write[id] = v;
+}
+
+
+
+#pragma kernel Combined
+[numthreads(THREAD_GROUPS, THREAD_GROUPS, 1)]
+void Combined(uint2 id : SV_DispatchThreadID)
+{
+	float4 v = sqrt(pow(read[id], 2.0) + pow(write[id], 2.0));
+
+	if (perChannelEdgeDetection) {
+		write[id] = v;
+	}
+	else {
+		write[id] = 0.2126*v.r + 0.7152*v.g + 0.0722*v.b;
+	}
+
+	write[id] = 1.0 - ((1.0-write[id]) * edgeMultiplier);
+}
+
+
+
+#pragma kernel Overlay
+[numthreads(THREAD_GROUPS, THREAD_GROUPS, 1)]
+void Overlay(uint2 id : SV_DispatchThreadID)
+{
+	write[id] = read[id] * (1.0 - write[id]);
+}

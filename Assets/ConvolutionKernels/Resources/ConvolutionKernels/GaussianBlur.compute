@@ -1,0 +1,61 @@
+﻿#define THREAD_GROUPS 32
+#define PI 3.141592
+#define TAU (PI * 2.0)
+
+Texture2D<float4> read;
+RWTexture2D<float4> write;
+
+uint width;
+uint height;
+
+uint radius;
+
+
+
+float Gaussian(float d, float sigma) {
+	return 1.0 / (sigma * sqrt(TAU)) * exp(-(d*d) / (2.0 * sigma * sigma));
+}
+
+
+
+#pragma kernel FirstPass
+[numthreads(THREAD_GROUPS, THREAD_GROUPS, 1)]
+void FirstPass(uint2 id : SV_DispatchThreadID)
+{
+	float4 numerator = float4(0, 0, 0, 0);
+	float4 denominator = float4(0, 0, 0, 0);
+	
+	for (uint k = 0; k < (radius * 2) + 1; k++) {
+		uint2 idOffset = uint2(id.x, id.y + k - radius);
+
+		if (idOffset.y >= 0 && idOffset.y < height) {
+			float weight = Gaussian(length(idOffset - id), radius);
+			numerator += read[idOffset] * weight;
+			denominator += weight;
+		}
+	}
+
+	write[id] = numerator / denominator;
+}
+
+
+
+#pragma kernel SecondPass
+[numthreads(THREAD_GROUPS, THREAD_GROUPS, 1)]
+void SecondPass(uint2 id : SV_DispatchThreadID)
+{
+	float4 numerator = float4(0, 0, 0, 0);
+	float4 denominator = float4(0, 0, 0, 0);
+
+	for (uint k = 0; k < (radius * 2) + 1; k++) {
+		uint2 idOffset = uint2(id.x + k - radius, id.y);
+
+		if (idOffset.x >= 0 && idOffset.x < width) {
+			float weight = Gaussian(length(idOffset - id), radius);
+			numerator += read[idOffset] * weight;
+			denominator += weight;
+		}
+	}
+
+	write[id] = numerator / denominator;
+}
