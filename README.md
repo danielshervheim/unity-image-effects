@@ -21,7 +21,7 @@ See them all in more detail [here](https://imgur.com/a/5oBfosa).
 
 ## To Install
 
-Download the [.unitypackage](https://drive.google.com/open?id=1V4H4UwyY09cSlxq2v_ZDbnvvqfyGXh3Z), or clone this repo.
+Download the [.unitypackage](/releases/tag/1.0), or clone this repo.
 
 
 
