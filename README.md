@@ -21,7 +21,7 @@ See them all in more detail [here](https://imgur.com/a/5oBfosa).
 
 ## To Install
 
-Download the [.unitypackage](/releases/download/1.0/image_effects_1.0.unitypackage), or clone this repo.
+Download the [.unitypackage](https://github.com/danielshervheim/Image-Effects-for-Unity/releases/download/1.0/image_effects_1.0.unitypackage), or clone this repo.
 
 
 
