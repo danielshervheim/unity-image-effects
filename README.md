@@ -1,6 +1,6 @@
 # Image Effects for Unity
 
-![all effects](https://imgur.com/DxGTbdR.png)
+![all effects](img/DxGTbdR.png)
 
 A collection of fullscreen image effects for Unity, all of which run in real-time. Includes (above from left to right):
 
@@ -12,8 +12,6 @@ A collection of fullscreen image effects for Unity, all of which run in real-tim
 - Gaussian blur.<sup>*</sup>
 - Pixelate.
 - Posterize (reduce colors).
-
-See them all in more detail [here](https://imgur.com/a/5oBfosa).
 
 <sup>*</sup>Requires a GPU which supports Compute shaders.
 
